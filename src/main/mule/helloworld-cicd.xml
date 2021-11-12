@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="cf21ba05-66fc-449b-b550-230746945dc5" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="helloworld-cicdFlow" doc:id="34ba8c58-166a-4862-ba9b-571a92463161" >
+		<http:listener doc:name="Listener" doc:id="13f5413b-b5be-4d3f-8aa5-c55f7cd40809" config-ref="HTTP_Listener_config" path="/api/hello"/>
+		<set-payload value='#["Hello Indosat Team"]' doc:name="Set Payload" doc:id="45ae5671-44c7-47d6-92e4-d593cee79c59" />
+		<logger level="INFO" doc:name="Logger" doc:id="9213b748-a3ad-4e13-b048-082c74b3407f" />
+	</flow>
+</mule>
